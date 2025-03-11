@@ -1,0 +1,178 @@
+*{
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgb(242, 246, 249);
+}
+
+ul, li{
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+.banner{
+    padding: 20px;
+    text-align: center;
+    margin: 4%;
+    border-radius: 9px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-left: 5%;
+    margin-right: 1%;
+    color: grey;
+}
+
+.banner:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    height: 45%;
+    border: none;
+    width: 100%;
+}
+
+.creat{
+    width: 45%;
+    border: 1px solid #333;
+    background-color: rgb(211, 205, 205);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-left: 4%;
+    color: grey;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 2%;
+}
+
+.product input{
+    width: 45%;
+}
+
+.price {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.price input{
+    width: 20%;
+}
+
+.nameproduction{
+    display: flex;
+}
+
+input{
+    width: 100%;
+}
+
+select{
+    width: 72%;
+}
+
+button{
+    border: none;
+    border-radius: 12px;
+    height: 24px;
+    cursor: pointer;
+    background-color: rgb(151, 143, 143);
+}
+
+button:hover{
+    transform: scale(1.02); 
+    background-color: #a19c9c;
+    color: beige;
+}
+
+#category--container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 10%;
+    width: 80%;
+    margin-right: 10%;
+    gap:12px;
+}
+#category--container div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    border: 1px solid #a19c9c;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: grey;
+    height: 120px;
+    background-color: rgb(236, 233, 233);
+
+}
+
+#category--container div:hover{
+    transform: scale(1.02); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+    color: rgb(64, 64, 15);
+}
+
+#production--container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 10%;
+    width: 80%;
+    margin-right: 10%;
+    gap: 64px;
+
+}
+
+#production--container div:hover{
+    transform: scale(1.02); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+img:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    z-index: 1;
+    position: relative;
+    top: -20px;
+    left: -20px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#old{
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+#new{
+    font-size: 18px;
+    color: red;
+}

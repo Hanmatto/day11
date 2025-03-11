@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="banner">WELCOME LIEN'SHOP</h1>
+    <header>
+        <div class="creat">
+            <h1 style="text-align: center;">NHẬP CATEGORY</h1>
+            <span>Nhập tên categor: <input type="text" id="name--category"
+                    placeholder="Nhập tên của category..."></span>
+            <span>Description categor: <input type="text" id="description--category"
+                    placeholder="Miêu tả category..."></span>
+            <p>ID categor: <span id="id--category"></span></p>
+            <button id="createCategory">Tạo category</button>
+        </div>
+
+        <div class="creat">
+            <h1 style="text-align: center;">NHẬP PRODUCTION</h1>
+            <div class="product">
+                Name product: <input type="text" id="name--product" placeholder="Nhập name product...">
+                ID categor: <span id="id--product"></span>
+            </div>
+            <div class="price">
+                New Price product: <input type="text" id="NewPrice--product">
+                Old Price product: <input type="text" id="OldPrice--product">
+            </div>
+            <span>Category product: <select id="category--product"></select></span>
+            <span>Description product: <input type="text" id="description--product"
+                    placeholder="Description product.."></span>
+            <span>UR Image product: <input type="text" id="image--product" placeholder="Image product..."></span>
+            <button id="createProduction">Tạo production</button>
+        </div>
+    </header>
+
+    <h1 class="banner">LIST CATEGORY</h1>
+
+    <div id="category--container"></div>
+
+    <h1 class="banner">LIST PRODUCTION</h1>
+    <div id="nameCategory"></div>
+    <div id="production--container"></div>
+
+</body>
+
+<script>
+    const categories = [];
+    const productions = [];
+    // Create category
+    document.getElementById('createCategory').addEventListener('click', () => {
+        const namecategory = document.getElementById('name--category').value;
+        const descriptioncategory = document.getElementById('description--category').value;
+        const idCategory = Math.floor(Math.random() * 100);
+        document.getElementById('id--category').innerHTML = idCategory;
+
+        const category = {
+            id: idCategory,
+            name: namecategory,
+            description: descriptioncategory
+        }
+        categories.push(category);
+
+        // Add category to list
+
+        const ListCategory = document.createElement('div');
+        ListCategory.innerHTML = `
+                <h1>${category.name}</h1>
+                <p>${category.description} | ${category.id} </p>
+            `;
+        document.getElementById('category--container').appendChild(ListCategory);
+
+        // Add category to selected list
+
+        const selectCategory = document.createElement('option');
+        selectCategory.value = category.id;
+        selectCategory.innerText = category.name;
+        document.getElementById('category--product').appendChild(selectCategory);
+    });
+
+    // Create production
+    document.getElementById('createProduction').addEventListener('click', () => {
+        const nameProduct = document.getElementById('name--product').value;
+        const newPriceProduct = document.getElementById('NewPrice--product').value;
+        const oldPriceProduct = document.getElementById('OldPrice--product').value;
+        const descriptionProduct = document.getElementById('description--product').value;
+        const imageProduct = document.getElementById('image--product').value;
+        const categoryProduct = document.getElementById('category--product').value;
+
+        const idProduct = Math.floor(Math.random() * 1000);
+        document.getElementById('id--product').innerHTML = idProduct;
+
+        // idCategory
+
+        const production = {
+            id: idProduct,
+            name: nameProduct,
+            newPrice: newPriceProduct,
+            oldPrice: oldPriceProduct,
+            description: descriptionProduct,
+            image: imageProduct,
+            idCategory: categoryProduct
+        }
+        productions.push(production);
+        renderProductions();
+    })
+
+    // Add production to list
+    function renderProductions() {
+        const productionContainer = document.getElementById("production--container");
+
+        categories.find (category => {
+            const categoryProduct = productions.find (production => production.idCategory === categories.id);
+            
+            const categoryElement = document.createElement ('div');
+            categoryElement.innerHTML = `
+                <h1>${category.name}</h1>
+            `;
+            
+            const ListProduction = document.createElement('div');
+            ListProduction.className = "list-production"
+            ListProduction.innerHTML = `
+                    <img src = "${production.image}" alt="image" />
+                            <div style="text-align: center">
+                                <h1>${production.name}</h1>
+                                <span id="old"> ${production.oldPrice} đ </span>
+                            <span id="new">${production.newPrice} đ</span>
+                            <p>${production.description} </p>
+                            </div>
+                        `;
+                        categoryElement.appendChild(ListProduction);
+        })
+        productionContainer.appendChild(categoryElement);
+
+            
+        }
+    
+
+
+</script>
+
+</html>
